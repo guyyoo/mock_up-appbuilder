@@ -183,8 +183,10 @@ for(let i = 0; i < fieldType.length; i++) {
         id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
         hidden: true,
         rows: [
+          {},
           {
             cols: [
+              {width: 30},
               {
                 view:"label",
                 label: "<span>Default Value: </span>",
@@ -204,8 +206,10 @@ for(let i = 0; i < fieldType.length; i++) {
                 placeholder: fieldType[i].name,
                 disabled: true
               },
+              {width: 30}
             ]
-          }
+          },
+          {}
         ]
       }
       break;
@@ -255,6 +259,7 @@ for(let i = 0; i < fieldType.length; i++) {
         rows: [
           {
             cols: [
+              {width: 30},
               {
                 view:"label",
                 label: "<span>Default Value: </span>",
@@ -274,52 +279,13 @@ for(let i = 0; i < fieldType.length; i++) {
                 placeholder: fieldType[i].name,
                 disabled: true
               },
+              {width: 30}
             ]
           },
+          {},
           {
             cols: [
-              {
-                view:"label",
-                label: "<span>Thousands: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view: "segmented",
-                value: 1,
-                options:[
-                  { "id": "1", "value": "None" }, 
-                  { "id": "2", "value": "Comma" }, 
-                  { "id": "3", "value": "Period" },
-                  { "id": "4", "value": "Space" }
-                ]
-              },
-              {width: 100}
-            ]
-          },
-          {
-            cols: [
-              {
-                view:"label",
-                label: "<span>Decimal: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view: "segmented",
-                value: 1,
-                options:[
-                  { "id": "1", "value": "None" }, 
-                  { "id": "2", "value": "Comma" }, 
-                  { "id": "3", "value": "Period" },
-                  { "id": "4", "value": "Space" }
-                ]
-              },
-              {width: 100}
-            ]
-          },
-          {
-            cols: [
+              {width: 30},
               {
                 view:"label",
                 label: "<span>Format: </span>",
@@ -336,10 +302,56 @@ for(let i = 0; i < fieldType.length; i++) {
                   { "id": "4", "value": "¥" }
                 ]
               },
-              {},
-              {}
+              {width: 30}
             ]
-          }
+          },
+          {},
+          {
+            cols: [
+              {width: 30},
+              {
+                view:"label",
+                label: "<span>Decimal: </span>",
+                align: "right",
+                width: 100
+              },
+              {
+                view: "segmented",
+                value: 1,
+                options:[
+                  { "id": "1", "value": "None" }, 
+                  { "id": "2", "value": "Comma" }, 
+                  { "id": "3", "value": "Period" },
+                  { "id": "4", "value": "Space" }
+                ]
+              },
+              {width: 30}
+            ]
+          },
+          {
+            cols: [
+              {width: 30},
+              {
+                view:"label",
+                label: "<span>Thousands: </span>",
+                align: "right",
+                width: 100
+              },
+              {
+                view: "segmented",
+                value: 1,
+                options:[
+                  { "id": "1", "value": "None" }, 
+                  { "id": "2", "value": "Comma" }, 
+                  { "id": "3", "value": "Period" },
+                  { "id": "4", "value": "Space" }
+                ]
+              },
+              {width: 30}
+            ]
+          },
+          {},
+          {}
         ]
       }
       break;
@@ -349,8 +361,10 @@ for(let i = 0; i < fieldType.length; i++) {
         id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
         hidden: true,
         rows: [
+          {},
           {
             cols: [
+              {width: 100},
               {
                 view: "label",
                 label: "<span>Default Value: </span>",
@@ -372,8 +386,10 @@ for(let i = 0; i < fieldType.length; i++) {
                 placeholder: fieldType[i].name,
                 disabled: true
               },
+              {width: 100}
             ]
-          }
+          },
+          {}
         ]
       }
       break;
@@ -383,8 +399,10 @@ for(let i = 0; i < fieldType.length; i++) {
         id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
         hidden: true,
         rows: [
+          {},
           {
             cols: [
+              {width: 100},
               {
                 view:"label",
                 label: "<span>Default Value: </span>",
@@ -406,8 +424,10 @@ for(let i = 0; i < fieldType.length; i++) {
                 placeholder: fieldType[i].name,
                 disabled: true
               },
+              {width: 100}
             ]
-          }
+          },
+          {}
         ]
       }
       break;
