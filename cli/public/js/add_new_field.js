@@ -212,9 +212,9 @@ const windows_fieldSetting = webix.ui({
                         {
                           view:"checkbox",
                           id: `add_new_field-field_setting-container-unique-single_line_text-checkbox-default_value`,
-                          name: "default_value-check_box",
+                          name: "default_value-checkbox",
                           width: 30,
-                          value: 0
+                          value: 0,
                         },
                         {
                           view: "text",
@@ -243,8 +243,8 @@ const windows_fieldSetting = webix.ui({
                         },
                         {
                           view:"checkbox",
-                          id: `add_new_field-field_setting-container-unique-long_text-check_box-default_value`,
-                          name: "default_value-check_box",
+                          id: `add_new_field-field_setting-container-unique-long_text-checkbox-default_value`,
+                          name: "default_value-checkbox",
                           width: 30,
                           value: 0
                         }
@@ -282,8 +282,8 @@ const windows_fieldSetting = webix.ui({
                         },
                         {
                           view:"checkbox",
-                          id: `add_new_field-field_setting-container-unique-number-check_box-default_value`,
-                          name: "default_value-check_box",
+                          id: `add_new_field-field_setting-container-unique-number-checkbox-default_value`,
+                          name: "default_value-checkbox",
                           width: 30,
                           value: 0
                         },
@@ -386,8 +386,8 @@ const windows_fieldSetting = webix.ui({
                         },
                         {
                           view: "checkbox",
-                          id: `add_new_field-field_setting-container-unique-date-check_box-default_value`,
-                          name: "default_value-check_box",
+                          id: `add_new_field-field_setting-container-unique-date-checkbox-default_value`,
+                          name: "default_value-checkbox",
                           width: 30,
                           value: 0
                         },
@@ -421,8 +421,8 @@ const windows_fieldSetting = webix.ui({
                         },
                         {
                           view:"checkbox",
-                          id: `add_new_field-field_setting-container-unique-date_&_time-check_box-default_value`,
-                          name: "default_value-check_box",
+                          id: `add_new_field-field_setting-container-unique-date_&_time-checkbox-default_value`,
+                          name: "default_value-checkbox",
                           width: 30,
                           value: 0
                         },
@@ -554,6 +554,7 @@ $$("appbuilder_designer_object-add_new_field-field")
 //   });
 
 // Button: Unigue
+// Single line text
 $$("add_new_field-choose_field_type-button-unique-single_line_text")
   .attachEvent("onItemClick", () => {
     $$("add_new_field-field_setting-container-unique-single_line_text").show();
@@ -561,6 +562,15 @@ $$("add_new_field-choose_field_type-button-unique-single_line_text")
     windows_fieldSetting.show();
   });
 
+$$(`add_new_field-field_setting-container-unique-single_line_text-checkbox-default_value`)
+  .attachEvent("onChange", (newv, oldv, config) => {
+    if(newv == 0)
+      $$(`add_new_field-field_setting-container-unique-single_line_text-text-default_value`).disable();
+    else
+      $$(`add_new_field-field_setting-container-unique-single_line_text-text-default_value`).enable();
+  });
+
+// Long text
 $$("add_new_field-choose_field_type-button-unique-long_text")
   .attachEvent("onItemClick", () => {
     $$("add_new_field-field_setting-container-unique-long_text").show();
@@ -568,6 +578,15 @@ $$("add_new_field-choose_field_type-button-unique-long_text")
     windows_fieldSetting.show();
   });
 
+$$(`add_new_field-field_setting-container-unique-long_text-checkbox-default_value`)
+  .attachEvent("onChange", (newv, oldv, config) => {
+    if(newv == 0)
+      $$(`add_new_field-field_setting-container-unique-long_text-text-default_value`).disable();
+    else
+      $$(`add_new_field-field_setting-container-unique-long_text-text-default_value`).enable();
+  });
+
+// Number
 $$("add_new_field-choose_field_type-button-unique-number")
   .attachEvent("onItemClick", () => {
     $$("add_new_field-field_setting-container-unique-number").show();
@@ -575,6 +594,15 @@ $$("add_new_field-choose_field_type-button-unique-number")
     windows_fieldSetting.show();
   });
 
+$$(`add_new_field-field_setting-container-unique-number-checkbox-default_value`)
+  .attachEvent("onChange", (newv, oldv, config) => {
+    if(newv == 0)
+      $$(`add_new_field-field_setting-container-unique-number-text-default_value`).disable();
+    else
+      $$(`add_new_field-field_setting-container-unique-number-text-default_value`).enable();
+  });
+
+// Date
 $$("add_new_field-choose_field_type-button-unique-date")
   .attachEvent("onItemClick", () => {
     $$("add_new_field-field_setting-container-unique-date").show();
@@ -582,11 +610,28 @@ $$("add_new_field-choose_field_type-button-unique-date")
     windows_fieldSetting.show();
   });
 
+$$(`add_new_field-field_setting-container-unique-date-checkbox-default_value`)
+  .attachEvent("onChange", (newv, oldv, config) => {
+    if(newv == 0)
+      $$(`add_new_field-field_setting-container-unique-date-text-default_value`).disable();
+    else
+      $$(`add_new_field-field_setting-container-unique-date-text-default_value`).enable();
+  });
+
+// Date & Time
 $$("add_new_field-choose_field_type-button-unique-date_&_time")
   .attachEvent("onItemClick", () => {
     $$("add_new_field-field_setting-container-unique-date_&_time").show();
     window_chooseFieldType.hide();
     windows_fieldSetting.show();
+  });
+
+$$(`add_new_field-field_setting-container-unique-date_&_time-checkbox-default_value`)
+  .attachEvent("onChange", (newv, oldv, config) => {
+    if(newv == 0)
+      $$(`add_new_field-field_setting-container-unique-date_&_time-text-default_value`).disable();
+    else
+      $$(`add_new_field-field_setting-container-unique-date_&_time-text-default_value`).enable();
   });
 
 // Button: Close
