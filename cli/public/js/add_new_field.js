@@ -1,486 +1,663 @@
-// data
-const fieldType = [
-  {
-    id: 0,
-    name: "Single line Text",
-    textColor: "#1B9DAC"
-  },
-  {
-    id: 1,
-    name: "Long Text",
-    textColor: "#853A27"
-  },
-  {
-    id: 2,
-    name: "Number",
-    textColor: "#1C5DC1"
-  },
-  {
-    id: 3,
-    name: "Date",
-    textColor: "#AC1818"
-  },
-  {
-    id: 4,
-    name: "Date & Time",
-    textColor: "#000000",
-  }
-];
-
 // structure
-const head = {
-  view: "toolbar",
-  css: "webix_dark",
-  paddingX: 2,
-  elements: [
-    {
-      view: "label",
-      id: "add_new_field-head-label",
-      align: "center",
-      label: "<span>Add new field</span>"
-    },
-    {
-      view: "button",
-      id: "add_new_field-head-button_close",
-      css: "webix_dark",
-      value: "Close",
-      width: 75
-    }
-  ]
-};
+const appbuilder_designer_object = webix.ui({
+  view: "button",
+  id: "appbuilder_designer_object-add_new_field-field",
+  label: "<span style=\"margin: 0px; font-size: 15px;\">New column</span>",
+  width: 100,
+});
 
-const body = {
-  rows: [
-    {
-      view: "form",
-      id: "add_new_field-body-fieldtype-form",
-      css: {
-        "background": "#ccc !important"
+const window_chooseFieldType = webix.ui({
+  view: "window",
+  position: "center",
+  width: 750,
+  height: 650,
+  head: {
+    view: "toolbar",
+    css: "webix_dark",
+    paddingX: 2,
+    elements: [
+      {
+        view: "label",
+        align: "center",
+        label: "<span>Choose field type</span>"
       },
-      elements: [
+      {
+        view: "button",
+        id: "add_new_field-choose_field_type-button-close",
+        label: "<span>Close</span>",
+        width: 100
+      }
+    ]
+  },
+  body: {
+    view: "scrollview",
+    height: 450,
+    scroll:"y",
+    body: {
+      rows: [
+        // {
+        //   view: "search",
+        //   id: "add_new_field-choose_field_type-search",
+        //   placeholder:"Search by title...",
+        //   align: "center",
+        // },
         {
-          view: "toolbar",
-          rows : [
+          id: "add_new_field-choose_field_type-button-unique",
+          cols: [
             {
-              cols: [
+              paddingX: 1,
+              rows: [
                 {
-                  view: "label",
-                  align: "right",
-                  label: "<span>*Select Field Type: </span>"
+                  view: "button",
+                  id: `add_new_field-choose_field_type-button-unique-single_line_text`,
+                  type: "imageTop",
+                  image:"/src/choose_field_type-button-single_line_text.svg",
+                  label: "<span>Single line text</span>",
+                  css: "webix_transparent",
+                  height: 150,
                 },
                 {
-                  view: "label",
-                  id: "add_new_field-body-fieldtype-select-label",
-                  align: "left",
+                  view: "button",
+                  id: `add_new_field-choose_field_type-button-unique-date_&_time`,
+                  type: "imageTop",
+                  image:"/src/choose_field_type-button-date_&_time.svg",
+                  label: "Date & Time",
+                  css: "webix_transparent",
+                  height: 150,
                 }
               ]
             },
             {
-              view: "scrollview",
-              height: 150,
-              scroll:"y",
-              body: {
-                cols: [
-                  {
-                    rows: []
-                  },
-                  {
-                    rows: []
-                  },
-                  {
-                    rows: []
-                  },
-                  {
-                    rows: []
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          rows: [
-            {
-              cols: [
+              paddingX: 1,
+              rows: [
                 {
-                  view:"label",
-                  label:"<span>Label: </span>",
-                  align: "right",
-                  width: 100
-                },
-                {
-                  name: "label",
-                  id: "add_new_field-body-fieldtype-form-field-label-input",
-                  view: "text",
-                },
-                {
-                  view:"label",
-                  label: "<span>Field Name: </span>",
-                  align: "right",
-                  width: 100
-                },
-                {
-                  view:"label",
-                  id: "add_new_field-body-fieldtype-form-field-label-output",
-                },
+                  view: "button",
+                  id: `add_new_field-choose_field_type-button-unique-long_text`,
+                  type: "imageTop",
+                  image:"/src/choose_field_type-button-long_text.svg",
+                  label: "<span>Long text</span>",
+                  css: "webix_transparent",
+                  height: 150
+                }
               ]
             },
-          ]
-        },
-        {
-          id: "add_new_field-body-fieldtype-form-field-unique",
-          view: "scrollview",
-          height: 250,
-          scroll:"y",
-          css: {
-            "background": "#eee !important"
-          },
-          body: {
-            rows:[]
-          }
-        },
-        {
-          cols: [
             {
-              view:"label",
-              label: "<span>Required: </span>",
-              align: "right",
-              width: 100
+              paddingX: 1,
+              rows: [
+                {
+                  view: "button",
+                  id: `add_new_field-choose_field_type-button-unique-number`,
+                  type: "imageTop",
+                  image:"/src/choose_field_type-button-number.svg",
+                  label: "<span>Number</span>",
+                  css: "webix_transparent",
+                  height: 150
+                }
+              ]
             },
             {
-              view: "switch", 
-              value: 0,
-              labelWidth:100
-            },
-            {},
-            {},
-            {},
-            {
-              view: "button",
-              id: "add_new_field-body-fieldtype-form-button-cancel",
-              css: "webix_danger",
-              value: "Cancel"
-            },
-            {
-              view: "button",
-              id: "add_new_field-body-fieldtype-form-button-submit",
-              css: "webix_primary",
-              value: "Submit"
-            },
+              paddingX: 1,
+              rows: [
+                {
+                  view: "button",
+                  id: `add_new_field-choose_field_type-button-unique-date`,
+                  type: "imageTop",
+                  image:"/src/choose_field_type-button-date.svg",
+                  label: "<span>Date</span>",
+                  css: "webix_transparent",
+                  height: 150
+                }
+              ]
+            }
           ]
         }
-      ],
-    },
-  ]
-};
-
-// field type unique UI
-for(let i = 0; i < fieldType.length; i++) {
-  let uniqueUI;
-  switch(fieldType[i].name) {
-    case "Single line Text":
-      uniqueUI = {
-        id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
-        hidden: true,
-        rows: [
-          {},
-          {
-            cols: [
-              {width: 30},
-              {
-                view:"label",
-                label: "<span>Default Value: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view:"checkbox",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-check_box-default_value`,
-                name: "default_value-check_box",
-                width: 30,
-                value: 0
-              },
-              {
-                view: "text",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`,
-                placeholder: fieldType[i].name,
-                disabled: true
-              },
-              {width: 30}
-            ]
-          },
-          {}
-        ]
-      }
-      break;
-
-    case "Long Text":
-      uniqueUI = {
-        id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
-        hidden: true,
-        rows: [
-          {
-            cols: [
-              {
-                view:"label",
-                label: "<span>Default Value: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view:"checkbox",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-check_box-default_value`,
-                name: "default_value-check_box",
-                width: 30,
-                value: 0
-              }
-            ]
-          },
-          {
-            cols: [
-              {width: 50},
-              {
-                view: "textarea",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`,
-                height: 175,
-                placeholder: fieldType[i].name,
-                disabled: true
-              },
-              {width: 50}
-            ]
-          }
-        ]
-      }
-      break;
-    case "Number":
-      uniqueUI = {
-        id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
-        hidden: true,
-        rows: [
-          {
-            cols: [
-              {width: 30},
-              {
-                view:"label",
-                label: "<span>Default Value: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view:"checkbox",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-check_box-default_value`,
-                name: "default_value-check_box",
-                width: 30,
-                value: 0
-              },
-              {
-                view: "text",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`,
-                placeholder: fieldType[i].name,
-                disabled: true
-              },
-              {width: 30}
-            ]
-          },
-          {},
-          {
-            cols: [
-              {width: 30},
-              {
-                view:"label",
-                label: "<span>Format: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view: "richselect",
-                value: 1,
-                options:[
-                  { "id": "1", "value": "None" }, 
-                  { "id": "2", "value": "$" }, 
-                  { "id": "3", "value": "฿" },
-                  { "id": "4", "value": "¥" }
-                ]
-              },
-              {width: 30}
-            ]
-          },
-          {},
-          {
-            cols: [
-              {width: 30},
-              {
-                view:"label",
-                label: "<span>Decimal: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view: "segmented",
-                value: 1,
-                options:[
-                  { "id": "1", "value": "None" }, 
-                  { "id": "2", "value": "Comma" }, 
-                  { "id": "3", "value": "Period" },
-                  { "id": "4", "value": "Space" }
-                ]
-              },
-              {width: 30}
-            ]
-          },
-          {
-            cols: [
-              {width: 30},
-              {
-                view:"label",
-                label: "<span>Thousands: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view: "segmented",
-                value: 1,
-                options:[
-                  { "id": "1", "value": "None" }, 
-                  { "id": "2", "value": "Comma" }, 
-                  { "id": "3", "value": "Period" },
-                  { "id": "4", "value": "Space" }
-                ]
-              },
-              {width: 30}
-            ]
-          },
-          {},
-          {}
-        ]
-      }
-      break;
-
-    case "Date":
-      uniqueUI = {
-        id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
-        hidden: true,
-        rows: [
-          {},
-          {
-            cols: [
-              {width: 100},
-              {
-                view: "label",
-                label: "<span>Default Value: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view: "checkbox",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-check_box-default_value`,
-                name: "default_value-check_box",
-                width: 30,
-                value: 0
-              },
-              {
-                view: "datepicker",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`,
-                timepicker: false,
-                width: 300,
-                placeholder: fieldType[i].name,
-                disabled: true
-              },
-              {width: 100}
-            ]
-          },
-          {}
-        ]
-      }
-      break;
-
-    case "Date & Time":
-      uniqueUI = {
-        id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}`,
-        hidden: true,
-        rows: [
-          {},
-          {
-            cols: [
-              {width: 100},
-              {
-                view:"label",
-                label: "<span>Default Value: </span>",
-                align: "right",
-                width: 100
-              },
-              {
-                view:"checkbox",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-check_box-default_value`,
-                name: "default_value-check_box",
-                width: 30,
-                value: 0
-              },
-              {
-                view: "datepicker",
-                id: `add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`,
-                timepicker: true,
-                width: 300,
-                placeholder: fieldType[i].name,
-                disabled: true
-              },
-              {width: 100}
-            ]
-          },
-          {}
-        ]
-      }
-      break;
-  }
-
-  body.rows[0].elements[2].body.rows.push(uniqueUI);
-
-  body.rows[0].elements[0].rows[1].body.cols[i%4].rows.push({
-    view: "button",
-    id: `add_new_field-body-fieldtype-form-scrollview-button-${fieldType[i].id.toString()}`,
-    value: fieldType[i].name,
-    click: () => {
-      $$("add_new_field-body-fieldtype-select-label").setValue(`<label><b><span style="color:${fieldType[i].textColor}">${fieldType[i].name}</span></b></label>`);
-        for(let j = 0; j < fieldType.length; j++) {
-          if(fieldType[j].id === fieldType[i].id)
-            $$(`add_new_field-body-fieldtype-form-field-unique-${fieldType[j].id.toString()}`).show();
-          else
-            $$(`add_new_field-body-fieldtype-form-field-unique-${fieldType[j].id.toString()}`).hide();
-        }
+      ]
     }
-  });
-}
+  }
+});
 
-// window
-const win = {
-  view:"window",
-  id:"add_new_field-window",
-  position:"center",
+const windows_fieldSetting = webix.ui({
+  view: "window",
+  position: "center",
   width: 750,
   height: 650,
-  head: head,
-  body: body
-};
+  head: {
+    view: "toolbar",
+    css: "webix_dark",
+    paddingX: 2,
+    elements: [
+      {
+        view: "label",
+        align: "center",
+        label: "<span>Field setting</span>"
+      },
+      {
+        view: "button",
+        id: "add_new_field-field_setting-button-close",
+        label: "<span>Close</span>",
+        width: 100
+      }
+    ]
+  },
+  body: {
+    height: 450,
+    rows: [
+      {
+        view: "form",
+        css: {
+          "background-color": "#ccc !important"
+        },
+        elements: [
+          {
+            rows: [
+              {
+                cols: [
+                  {
+                    view:"label",
+                    label:"<span>Label: </span>",
+                    align: "right",
+                    width: 100
+                  },
+                  {
+                    name: "label",
+                    id: "add_new_field-field_setting-field-label",
+                    view: "text",
+                  },
+                  {
+                    view:"label",
+                    label: "<span>Field Name: </span>",
+                    align: "right",
+                    width: 100
+                  },
+                  {
+                    view:"label",
+                    id: "add_new_field-field_setting-field-field_name",
+                    label: "<div class=\"webix_el_box\" style=\"background-color: #aaa; padding: 0px 12px; text-align:left;\"></div>"
+                  },
+                  {
+                    view: "button",
+                    id: "add_new_field-field_setting-button-edit_field_name",
+                    css: "webix_transparent",
+                    label: "<span class=\"webix_icon_btn wxi-pencil\" style=\"margin: 0px;\"></span>",
+                    width: 40,
+                  },
+                ]
+              },
+            ]
+          },
+          {
+            id: "add_new_field-field_setting-container-unique",
+            view: "scrollview",
+            height: 325,
+            scroll:"y",
+            css: {
+              "background-color": "#eee !important"
+            },
+            body: {
+              rows: [
+                {
+                  id: `add_new_field-field_setting-container-unique-single_line_text`,
+                  hidden: true,
+                  rows: [
+                    {},
+                    {
+                      cols: [
+                        {width: 30},
+                        {
+                          view:"label",
+                          label: "<span>Default Value: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view:"checkbox",
+                          id: `add_new_field-field_setting-container-unique-single_line_text-checkbox-default_value`,
+                          name: "default_value-check_box",
+                          width: 30,
+                          value: 0
+                        },
+                        {
+                          view: "text",
+                          id: `add_new_field-field_setting-container-unique-single_line_text-text-default_value`,
+                          placeholder: "Single line text",
+                          disabled: true
+                        },
+                        {width: 30}
+                      ]
+                    },
+                    {}
+                  ]
+                },
+                {
+                  id: `add_new_field-field_setting-container-unique-long_text`,
+                  hidden: true,
+                  rows: [
+                    {height: 30},
+                    {
+                      cols: [
+                        {
+                          view:"label",
+                          label: "<span>Default Value: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view:"checkbox",
+                          id: `add_new_field-field_setting-container-unique-long_text-check_box-default_value`,
+                          name: "default_value-check_box",
+                          width: 30,
+                          value: 0
+                        }
+                      ]
+                    },
+                    {
+                      cols: [
+                        {width: 50},
+                        {
+                          view: "textarea",
+                          id: `add_new_field-field_setting-container-unique-long_text-text-default_value`,
+                          height: 225,
+                          placeholder: "Long text",
+                          disabled: true
+                        },
+                        {width: 50}
+                      ]
+                    },
+                    {}
+                  ]
+                },
+                {
+                  id: `add_new_field-field_setting-container-unique-number`,
+                  hidden: true,
+                  rows: [
+                    {},
+                    {
+                      cols: [
+                        {width: 30},
+                        {
+                          view:"label",
+                          label: "<span>Default Value: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view:"checkbox",
+                          id: `add_new_field-field_setting-container-unique-number-check_box-default_value`,
+                          name: "default_value-check_box",
+                          width: 30,
+                          value: 0
+                        },
+                        {
+                          view: "text",
+                          id: `add_new_field-field_setting-container-unique-number-text-default_value`,
+                          placeholder: "Number",
+                          disabled: true
+                        },
+                        {width: 30}
+                      ]
+                    },
+                    {},
+                    {
+                      cols: [
+                        {width: 30},
+                        {
+                          view:"label",
+                          label: "<span>Format: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view: "richselect",
+                          id: "add_new_field-field_setting-container-unique-number-format",
+                          value: 1,
+                          options:[
+                            { "id": "add_new_field-field_setting-container-unique-number-format-1", "value": "None" }, 
+                            { "id": "add_new_field-field_setting-container-unique-number-format-2", "value": "$" }, 
+                            { "id": "add_new_field-field_setting-container-unique-number-format-3", "value": "฿" },
+                            { "id": "add_new_field-field_setting-container-unique-number-format-4", "value": "¥" }
+                          ]
+                        },
+                        {width: 30}
+                      ]
+                    },
+                    {},
+                    {
+                      cols: [
+                        {width: 30},
+                        {
+                          view:"label",
+                          label: "<span>Decimal: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view: "segmented",
+                          id: "add_new_field-field_setting-container-unique-number-decimal",
+                          value: 1,
+                          options:[
+                            { "id": "add_new_field-field_setting-container-unique-number-decima-1", "value": "None" }, 
+                            { "id": "add_new_field-field_setting-container-unique-number-decima-2", "value": "Comma" }, 
+                            { "id": "add_new_field-field_setting-container-unique-number-decima-3", "value": "Period" },
+                            { "id": "add_new_field-field_setting-container-unique-number-decima-4", "value": "Space" }
+                          ]
+                        },
+                        {width: 30}
+                      ]
+                    },
+                    {
+                      cols: [
+                        {width: 30},
+                        {
+                          view:"label",
+                          label: "<span>Thousands: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view: "segmented",
+                          id: "add_new_field-field_setting-container-unique-number-thousands",
+                          value: 1,
+                          options:[
+                            { "id": "add_new_field-field_setting-container-unique-number-thousands-1", "value": "None" }, 
+                            { "id": "add_new_field-field_setting-container-unique-number-thousands-2", "value": "Comma" }, 
+                            { "id": "add_new_field-field_setting-container-unique-number-thousands-3", "value": "Period" },
+                            { "id": "add_new_field-field_setting-container-unique-number-thousands-4", "value": "Space" }
+                          ]
+                        },
+                        {width: 30}
+                      ]
+                    },
+                    {},
+                  ]
+                },
+                {
+                  id: `add_new_field-field_setting-container-unique-date`,
+                  hidden: true,
+                  rows: [
+                    {},
+                    {
+                      cols: [
+                        {width: 100},
+                        {
+                          view: "label",
+                          label: "<span>Default Value: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view: "checkbox",
+                          id: `add_new_field-field_setting-container-unique-date-check_box-default_value`,
+                          name: "default_value-check_box",
+                          width: 30,
+                          value: 0
+                        },
+                        {
+                          view: "datepicker",
+                          id: `add_new_field-field_setting-container-unique-date-datepicker-default_value`,
+                          timepicker: false,
+                          width: 300,
+                          placeholder: "Date",
+                          disabled: true
+                        },
+                        {width: 100}
+                      ]
+                    },
+                    {}
+                  ]
+                },
+                {
+                  id: `add_new_field-field_setting-container-unique-date_&_time`,
+                  hidden: true,
+                  rows: [
+                    {},
+                    {
+                      cols: [
+                        {width: 100},
+                        {
+                          view:"label",
+                          label: "<span>Default Value: </span>",
+                          align: "right",
+                          width: 100
+                        },
+                        {
+                          view:"checkbox",
+                          id: `add_new_field-field_setting-container-unique-date_&_time-check_box-default_value`,
+                          name: "default_value-check_box",
+                          width: 30,
+                          value: 0
+                        },
+                        {
+                          view: "datepicker",
+                          id: `add_new_field-field_setting-container-unique-date_&_time-datepicker-default_value`,
+                          timepicker: true,
+                          width: 300,
+                          placeholder: "Date & Time",
+                          disabled: true
+                        },
+                        {width: 100}
+                      ]
+                    },
+                    {}
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            cols: [
+              {
+                view:"label",
+                label: "<span>Required: </span>",
+                align: "right",
+                width: 100
+              },
+              {
+                view: "switch",
+                id: "add_new_field-field_setting-required",
+                value: 0,
+                labelWidth:100
+              },
+              {},
+              {},
+              {},
+              {
+                view: "button",
+                id: "add_new_field-field_setting-button-cancel",
+                css: "webix_danger",
+                value: "Cancel"
+              },
+              {
+                view: "button",
+                id: "add_new_field-field_setting-button-submit",
+                css: "webix_primary",
+                value: "Submit"
+              },
+            ]
+          }
+        ],
+      },
+    ]
+  }
+});
 
-// render
-webix.ui(win).show();
+const windows_fieldSetting_editFildName = webix.ui({
+  view:"window",
+  position:"center",
+  width: 450,
+  height: 200,
+  head: {
+    view: "toolbar",
+    css: "webix_dark",
+    paddingX: 2,
+    elements: [
+      {
+        view: "label",
+        align: "center",
+        label: "<span>Edit field name</span>"
+      }
+    ]
+  },
+  body: {
+    padding: 10,
+    rows: [
+      {
+        cols: [
+          {
+            view:"label",
+            label:"<span>Field Name: </span>",
+            align: "right",
+            width: 100
+          },
+          {
+            name: "label",
+            id: "add_new_field-field_setting-edit_field_name-field_name",
+            view: "text",
+          },
+        ]
+      },
+      {
+        cols: [
+          {},
+          {
+            view: "button",
+            id: "add_new_field-field_setting-edit_field_name-button-cancel",
+            css: "webix_danger",
+            value: "Cancel",
+            width: 100
+          },
+          {
+            view: "button",
+            id: "add_new_field-field_setting-edit_field_name-button-submit",
+            css: "webix_primary",
+            value: "Submit",
+            width: 100
+          }
+        ]
+      }
+    ]
+  }
+});
 
-for(let i = 0; i < fieldType.length; i++) {
-  $$(`add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`).disable()
-  $$(`add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-check_box-default_value`)
-    .attachEvent("onChange", (newv, oldv, config) => {
-      if(newv == 0)
-        $$(`add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`).disable();
-      else
-        $$(`add_new_field-body-fieldtype-form-field-unique-${fieldType[i].id.toString()}-text-default_value`).enable();
-    });
+// event handler
+// Main
+// Button: New column
+$$("appbuilder_designer_object-add_new_field-field")
+  .attachEvent("onItemClick", () => {
+    window_chooseFieldType.show();
+    appbuilder_designer_object.disable();
+  });
+
+// // Search: Button Unigue
+// $$("add_new_field-choose_field_type-search")
+//   .attachEvent("onTimedKeyPress", () => {
+//     const value = $$("add_new_field-choose_field_type-search").getValue().toLowerCase();
+//   });
+
+// Button: Unigue
+$$("add_new_field-choose_field_type-button-unique-single_line_text")
+  .attachEvent("onItemClick", () => {
+    $$("add_new_field-field_setting-container-unique-single_line_text").show();
+    window_chooseFieldType.hide();
+    windows_fieldSetting.show();
+  });
+
+$$("add_new_field-choose_field_type-button-unique-long_text")
+  .attachEvent("onItemClick", () => {
+    $$("add_new_field-field_setting-container-unique-long_text").show();
+    window_chooseFieldType.hide();
+    windows_fieldSetting.show();
+  });
+
+$$("add_new_field-choose_field_type-button-unique-number")
+  .attachEvent("onItemClick", () => {
+    $$("add_new_field-field_setting-container-unique-number").show();
+    window_chooseFieldType.hide();
+    windows_fieldSetting.show();
+  });
+
+$$("add_new_field-choose_field_type-button-unique-date")
+  .attachEvent("onItemClick", () => {
+    $$("add_new_field-field_setting-container-unique-date").show();
+    window_chooseFieldType.hide();
+    windows_fieldSetting.show();
+  });
+
+$$("add_new_field-choose_field_type-button-unique-date_&_time")
+  .attachEvent("onItemClick", () => {
+    $$("add_new_field-field_setting-container-unique-date_&_time").show();
+    window_chooseFieldType.hide();
+    windows_fieldSetting.show();
+  });
+
+// Button: Close
+$$("add_new_field-choose_field_type-button-close")
+  .attachEvent("onItemClick", () => {
+    window_chooseFieldType.hide();
+    appbuilder_designer_object.enable();
+});
+
+// Field setting
+// Button: Close
+$$("add_new_field-field_setting-button-close")
+  .attachEvent("onItemClick", () => {
+    $$("add_new_field-field_setting-container-unique-single_line_text").hide();
+    $$("add_new_field-field_setting-container-unique-long_text").hide();
+    $$("add_new_field-field_setting-container-unique-number").hide();
+    $$("add_new_field-field_setting-container-unique-date").hide();
+    $$("add_new_field-field_setting-container-unique-date_&_time").hide();
+    windows_fieldSetting.hide();
+    window_chooseFieldType.hide();
+    appbuilder_designer_object.enable();
+  });
+
+// Field: Label
+$$("add_new_field-field_setting-field-label")
+  .attachEvent("onChange", (newv, oldv, config) => {
+    $$("add_new_field-field_setting-field-field_name")
+      .setValue(`<div class=\"webix_el_box\" style=\"background-color: #aaa; padding: 0px 12px; text-align:left;\"><span style="color:#AC1818"><b>${newv}</b></span></div>`);
+  });
+
+// Field: Field Name
+$$("add_new_field-field_setting-button-edit_field_name")
+  .attachEvent("onItemClick", () => {
+    windows_fieldSetting.disable();
+    windows_fieldSetting_editFildName.show();
+  });
+
+$$("add_new_field-field_setting-edit_field_name-button-cancel")
+  .attachEvent("onItemClick", () => {
+    windows_fieldSetting.enable();
+    windows_fieldSetting_editFildName.hide();
+
+    $$("add_new_field-field_setting-edit_field_name-field_name").setValue();
+  });
+
+$$("add_new_field-field_setting-edit_field_name-button-submit")
+  .attachEvent("onItemClick", () => {
+    windows_fieldSetting.enable();
+    windows_fieldSetting_editFildName.hide();
+
+    const fieldNameValue = $$("add_new_field-field_setting-edit_field_name-field_name").getValue();
+
+    $$("add_new_field-field_setting-edit_field_name-field_name").setValue();
+    $$("add_new_field-field_setting-field-field_name").setValue(`<div class=\"webix_el_box\" style=\"background-color: #aaa; padding: 0px 12px; text-align:left;\"><span style="color:#AC1818"><b>${fieldNameValue}</b></span></div>`);
+  });
+
+// Button:Cancel
+$$("add_new_field-field_setting-button-cancel")
+  .attachEvent("onItemClick", () => {
+    $$("add_new_field-field_setting-container-unique-single_line_text").hide();
+    $$("add_new_field-field_setting-container-unique-long_text").hide();
+    $$("add_new_field-field_setting-container-unique-number").hide();
+    $$("add_new_field-field_setting-container-unique-date").hide();
+    $$("add_new_field-field_setting-container-unique-date_&_time").hide();
+    windows_fieldSetting.hide();
+    window_chooseFieldType.show();
+  });
+
+// init
+const init = () => {
+  appbuilder_designer_object.show();
 }
 
-const init = (field) => {
-  $$("add_new_field-body-fieldtype-form-field-label-input")
-        .attachEvent("onChange", (newv, oldv, config) => {
-        $$("add_new_field-body-fieldtype-form-field-label-output").setValue(`<span style="color:#AC1818"><b>${newv}</b></span>`);
-      });
-}
-
-init(fieldType[2]);
+init();
