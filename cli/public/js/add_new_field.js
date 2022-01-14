@@ -334,10 +334,10 @@ const window_newColumn = webix.ui({
           {
             view:"dataview",
             id:"new_column-body-choose_field_type-dataview-unique",
-            template: "<p style=\"text-align: center; margin: 0px; font-size: 20px; font-family: Roboto, sans-serif; font-weight: 500; color: #475466; letter-spacing: 0px; line-height: 30px;\"><img class=\"webix_image\" style=\"max-width:160.5px; max-height:106px;\" src=\"#image#\"><br><span>#label#</span></p>",
+            template: "<p style=\"text-align: center; margin: 0px; font-size: 20px; font-family: Roboto, sans-serif; font-weight: 500; color: #475466; letter-spacing: 0px; line-height: 30px;\"><img class=\"webix_image\" style=\"max-width:122.85px; max-height:81px; filter: invert(60%);\" src=\"#image#\"><br><span>#label#</span></p>",
             type: {
-              width: 187.5,
-              height: 150
+              width: 150.6,
+              height: 125
             },
             data: field_type,
             datatype: "json",
@@ -542,6 +542,11 @@ const setDataDefault = () => {
   data.unigue.default_value = '';
   $$("new_column-head-label").setValue("<span>Choose Field-Type</span>");
   $$("new_column-body-choose_field_type-search").setValue('');
+  $$("new_column-body-choose_field_type-dataview-unique")
+    .filter(obj => {
+      const vaule = $$("new_column-body-choose_field_type-search").getValue()
+      return obj.label.toLowerCase().indexOf(vaule !== -1);
+    });
   $$("new_column-body-field_setting-field-field_name").setValue('');
   $$("new_column-body-field_setting-required").setValue(0);
   $$("new_column-body-field_setting-show_icon").setValue(0);
@@ -601,7 +606,7 @@ $$("new_column-head-button-close")
 $$("new_column-body-choose_field_type-search")
   .attachEvent("onTimedKeyPress", (e) => {
     const value = $$("new_column-body-choose_field_type-search").getValue().toLowerCase();
-    $$("new_column-body-choose_field_type-dataview-unique").filter(obj => obj.label.toLowerCase().indexOf(value)!=-1)
+    $$("new_column-body-choose_field_type-dataview-unique").filter(obj => obj.label.toLowerCase().indexOf(value)!= -1)
   });
 
 // Dataview: Unigue
