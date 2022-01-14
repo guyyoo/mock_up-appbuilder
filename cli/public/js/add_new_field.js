@@ -2,7 +2,7 @@
 const field_type = [
   {
     id: "new_column-body-choose_field_type-dataview-unique-single_line_text",
-    image:"/src/choose_field_type-dataview-single_line_text.svg",
+    icon: "fas fa-font",
     label: "Single line text",
     unigue: {
       id: `new_column-body-field_setting-container-unique-single_line_text`,
@@ -36,7 +36,7 @@ const field_type = [
   },
   {
     id: "new_column-body-choose_field_type-dataview-unique-long_text",
-    image:"/src/choose_field_type-dataview-long_text.svg",
+    icon: "fas fa-paragraph",
     label: "Long text",
     unigue: {
       id: `new_column-body-field_setting-container-unique-long_text`,
@@ -77,7 +77,7 @@ const field_type = [
   },
   {
     id: `new_column-body-choose_field_type-dataview-unique-number`,
-    image:"/src/choose_field_type-dataview-number.svg",
+    icon: "fas fa-infinity",
     label: "Number",
     unigue: {
       id: `new_column-body-field_setting-container-unique-number`,
@@ -174,7 +174,7 @@ const field_type = [
   },
   {
     id: `new_column-body-choose_field_type-dataview-unique-date`,
-    image:"/src/choose_field_type-dataview-date.svg",
+    icon: "far fa-calendar-alt",
     label: "Date",
     unigue: {
       id: `new_column-body-field_setting-container-unique-date`,
@@ -209,7 +209,7 @@ const field_type = [
   },
   {
     id: `new_column-body-choose_field_type-dataview-unique-datetime`,
-    image:"/src/choose_field_type-dataview-datetime.svg",
+    icon: "fas fa-clock",
     label: "Datetime",
     unigue: {
       id: `new_column-body-field_setting-container-unique-datetime`,
@@ -334,7 +334,8 @@ const window_newColumn = webix.ui({
           {
             view:"dataview",
             id:"new_column-body-choose_field_type-dataview-unique",
-            template: "<p style=\"text-align: center; margin: 0px; font-size: 20px; font-family: Roboto, sans-serif; font-weight: 500; color: #475466; letter-spacing: 0px; line-height: 30px;\"><img class=\"webix_image\" style=\"max-width:122.85px; max-height:81px; filter: invert(60%);\" src=\"#image#\"><br><span>#label#</span></p>",
+            template: "<div class=\"webix_el_box\"><button type=\"button\" class=\"webix_button webix_img_btn_top\" style=\"width:100%; text-align:center;\"><span style=\"font-size: 81px;\"><i class=\"#icon#\"></i><br></span><span>#label#</span></button></div>",
+            // template: "<p style=\"text-align: center; margin: 0px; font-size: 20px; font-family: Roboto, sans-serif; font-weight: 500; color: #475466; letter-spacing: 0px; line-height: 30px;\"><img class=\"webix_image\" style=\"max-width:122.85px; max-height:81px; filter: invert(60%);\" src=\"#image#\"><br><span>#label#</span></p>",
             type: {
               width: 150.6,
               height: 125
