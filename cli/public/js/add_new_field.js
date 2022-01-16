@@ -1,4 +1,4 @@
-// data
+// Field Type
 const field_type = [
   {
     id: "new_column-body-choose_field_type-dataview-unique-single_line_text",
@@ -298,7 +298,7 @@ const window_newColumn = webix.ui({
             id: "new_column-head-button-maximize",
             label: "<span class=\"webix_icon\"><i class=\"fas fa-expand\"></i></span>",
             css: "webix_transparent",
-            width: 50
+            width: 40
           },
           {
             view: "button",
@@ -306,14 +306,14 @@ const window_newColumn = webix.ui({
             label: "<span class=\"webix_icon\"><i class=\"fas fa-compress\"></i></span>",
             hidden: true,
             css: "webix_transparent",
-            width: 50
+            width: 40
           },
           {
             view: "button",
             id: "new_column-head-button-close",
             label: "<span class=\"webix_icon\"><i class=\"fas fa-times\"></i></span>",
             css: "webix_transparent",
-            width: 50
+            width: 40
           }
         ]
       }
@@ -332,27 +332,23 @@ const window_newColumn = webix.ui({
             align: "center",
           },
           {
-            view:"dataview",
+            view: "dataview",
             id:"new_column-body-choose_field_type-dataview-unique",
-            template: "<div class=\"webix_el_box\"><button type=\"button\" class=\"webix_button webix_img_btn_top\" style=\"width:100%; text-align:center;\"><span style=\"font-size: 81px;\"><i class=\"#icon#\"></i><br></span><span>#label#</span></button></div>",
-            // template: "<p style=\"text-align: center; margin: 0px; font-size: 20px; font-family: Roboto, sans-serif; font-weight: 500; color: #475466; letter-spacing: 0px; line-height: 30px;\"><img class=\"webix_image\" style=\"max-width:122.85px; max-height:81px; filter: invert(60%);\" src=\"#image#\"><br><span>#label#</span></p>",
             type: {
-              width: 150.6,
-              height: 125
+              width: 94.125,
+              height: 94.125,
+              template: "<button type=\"button\" class=\"webix_button webix_img_btn_top\" style=\"text-align: center;\"><span style=\"font-size: 50px;\"><i class=\"#icon#\"></i><br></span><span style=\"font-size: 12px;\">#label#</span></button>",
+              css: "webix_transparent"
             },
             data: field_type,
             datatype: "json",
-            select: 1,
-            css: "webix_transparent"
+            select: 1
           },
         ]
       },
       {
         view: "form",
         id: "new_column-body-field_setting",
-        css: {
-          "background-color": "#ccc !important"
-        },
         hidden: true,
         maxWidth: 9999,
         elements: [
@@ -375,13 +371,10 @@ const window_newColumn = webix.ui({
                     view: "button",
                     id: "new_column-body-field_setting-button-edit_field_name",
                     css: "webix_transparent",
-                    label: "<span class=\"webix_icon_btn wxi-pencil\" style=\"margin: 0px;\"></span>",
+                    label: "<span class=\"webix_icon_btn\" style=\"margin: 0px;\"><i class=\"fas fa-cog\"></i></span>",
                     width: 40,
-                  }
-                ]
-              },
-              {
-                cols: [
+                  },
+                  { width: 10 },
                   {
                     view:"label",
                     label: "<span>Required: </span>",
@@ -408,17 +401,21 @@ const window_newColumn = webix.ui({
                     width: 55
                   }
                 ]
-              }
+              },
+              {
+                view:"label",
+                id: "new_column-body-field_setting-field-field_type",
+                align: "left",
+                width: 200
+              },
             ]
           },
           {
             id: "new_column-body-field_setting-container-unique",
             view: "scrollview",
             scroll:"y",
-            css: {
-              "background-color": "#eee !important"
-            },
             body: {
+              padding: 25,
               rows: field_type.map((e) => e.unigue)
             }
           },
@@ -428,7 +425,7 @@ const window_newColumn = webix.ui({
               {
                 view: "button",
                 id: "new_column-body-field_setting-button-back",
-                label: "<span class=\"webix_icon\"><i class=\"fas fa-arrow-left\"></i></span><span class\"text\">Back</span>",
+                label: "<span class=\"webix_icon\"><i class=\"fas fa-arrow-left fa-sm\"></i></span><span class\"text\">Back</span>",
                 css: "webix_transparent icon_back_btn",
                 width: 100,
               },
@@ -476,7 +473,7 @@ const window_EditFieldName = webix.ui({
             view: "label",
             label: "<span>Field Name: </span>",
             align: "right",
-            width: 100
+            width: 125
           },
           {
             view:"text",
@@ -489,9 +486,9 @@ const window_EditFieldName = webix.ui({
         cols: [
           {
             view: "label",
-            label: "<span>Label: </span>",
+            label: "<span>Database Label: </span>",
             align: "right",
-            width: 100
+            width: 125
           },
           {
             view:"text",
@@ -616,7 +613,8 @@ $$("new_column-body-choose_field_type-dataview-unique")
     const field_type_index = field_type.findIndex(e => e.id === id);
 
     data.field_type = field_type[field_type_index].label
-    $$("new_column-head-label").setValue(`<span>Field Setting - ${field_type[field_type_index].label}</span>`);
+    $$("new_column-head-label").setValue(`<span>Field Setting</span>`);
+    $$("new_column-body-field_setting-field-field_type").setValue(`<span style="font-size: 13px;"><i>*${data.field_type}</i></span>`);
     $$(id.replace("choose_field_type-dataview", "field_setting-container")).show();
     $$("new_column-body-choose_field_type").hide();
     $$("new_column-body-field_setting").show();
