@@ -403,8 +403,8 @@ const window_newColumn = webix.ui({
                 ]
               },
               {
-                view:"label",
-                id: "new_column-body-field_setting-field-field_type",
+                view: "label",
+                label:"<span>Custom Settings </span>",
                 align: "left",
                 width: 200
               },
@@ -613,8 +613,7 @@ $$("new_column-body-choose_field_type-dataview-unique")
     const field_type_index = field_type.findIndex(e => e.id === id);
 
     data.field_type = field_type[field_type_index].label
-    $$("new_column-head-label").setValue(`<span>Field Setting</span>`);
-    $$("new_column-body-field_setting-field-field_type").setValue(`<span style="font-size: 13px;"><i>*${data.field_type}</i></span>`);
+    $$("new_column-head-label").setValue(`<span>Create ${data.field_type} Field</span>`);
     $$(id.replace("choose_field_type-dataview", "field_setting-container")).show();
     $$("new_column-body-choose_field_type").hide();
     $$("new_column-body-field_setting").show();
