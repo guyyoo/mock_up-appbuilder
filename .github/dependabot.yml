@@ -1,0 +1,10 @@
+version: 2
+updates:
+   - package-ecosystem: "npm"
+     directory: "/"
+     schedule:
+        interval: "daily"
+      #   time: "12:25"
+      #   timezone: "Asia/Bangkok"
+     allow:
+        - dependency-name: "express"
