@@ -13,10 +13,9 @@ jobs:
   dependabot:
     runs-on: ubuntu-latest
     needs: tests
-    if: ${{ github.actor == 'dependabot[bot]' }}
     strategy:
       matrix:
-        package: [express]
+        package: ["express", "ab-utils"]
     steps:
       - name: Dependabot metadata
         id: metadata
