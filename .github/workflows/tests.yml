@@ -1,0 +1,14 @@
+name: Tests
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "Hello World!"
+      - name: Check Test
+        if: ${{ success() }}
+        run: echo "Pass!"
