@@ -1,0 +1,12 @@
+version: 2
+updates:
+   - package-ecosystem: "npm"
+     directory: /
+     insecure-external-code-execution: allow
+     schedule:
+        interval: "daily"
+   #   allow:
+   #      - dependency-name: "ab-utils"
+   #      - dependency-name: "express"
+   #      - dependency-name: "webix"
+   #      - dependency-name: "@digiserve/ab-utils"
