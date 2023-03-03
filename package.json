@@ -14,7 +14,7 @@
   "dependencies": {
     "express": "^4.12.2",
     "math-lib": "npm:@guyyoo/math-lib@^1.0.0",
-    "webix": "^9.0.0"
+    "webix": "^10.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
