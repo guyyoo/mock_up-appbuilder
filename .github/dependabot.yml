@@ -4,6 +4,8 @@ updates:
      directory: "/"
      schedule:
         interval: "daily"
+     update_strategy: "widen"
      allow:
+        - dependency-name: "ab-utils"
         - dependency-name: "express"
         - dependency-name: "webix"
