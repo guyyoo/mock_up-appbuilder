@@ -12,8 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2",
-    "webix": "^9.1.0"
+    "ab-utils": "npm:@digiserve/ab-utils@^1.2.1",
+    "express": "^4.12.2",
+    "webix": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

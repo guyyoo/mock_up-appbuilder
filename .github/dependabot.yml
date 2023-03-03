@@ -1,0 +1,11 @@
+version: 2
+updates:
+   - package-ecosystem: "npm"
+     directory: "/"
+     schedule:
+        interval: "daily"
+     versioning-strategy: widen
+     allow:
+        - dependency-name: "ab-utils"
+        - dependency-name: "express"
+        - dependency-name: "webix"
